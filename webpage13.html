@@ -1,0 +1,946 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content=" "> 
+
+  
+  <title>Shinchan Universe</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+
+  
+  <link rel="stylesheet" href="/static/home/css/navbar.css">
+  <link rel="icon" type="image/png" href="/static/home/img/favicon.png"> 
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60726752-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-60726752-3');
+  </script>
+
+  <!-- Google Ads Auto -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9655830461045889",
+      enable_page_level_ads: true
+    });
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><img class="brandLogo" src="" alt=""></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="http://127.0.0.1:5500/my%20website/index.html">Home</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="/videos">Videos</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="https://pythonbycheeeku.blogspot.com/">Blog</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="/contact">Contact Me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 mr-3" method="get" action="/search/">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+      
+      <div>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      </div>
+      
+    </div>
+
+  </nav>
+  
+  
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/profile/login" method='post'><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+                    <div class="form-group">
+                        <label for="lusername">Username</label>
+                        <input type="name" class="form-control" id="luname" placeholder="Enter your username"
+                            name="uname">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="lpassword" placeholder="Enter your password"
+                            name="password">
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+                    <input type="hidden" name="path" value="/videos/">
+
+                    <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form name="contact" method="post" action="/profile/signup"><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+
+          <div class="form-group">
+            <label for="uname">Username</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter your Name" name="uname">
+            <small id="unamehelp" class="form-text text-muted px-1">
+              Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
+              allowed) with no spaces
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+          </div>
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <div class="mx-0">
+              <div class="col-md-8 px-0">
+                <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                <small id="otpMessage" class="form-text"></small>
+              </div>
+              <div class="col-md-4 my-1 px-0">
+                <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Choose a password</label>
+            <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="password2">Retype a password</label>
+            <input type="password" class="form-control" id="password2" placeholder="Retype your password"
+              name="password2">
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+          <input type="hidden" name="path" value="/videos/">
+          <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+<div class="container-fluid main-container">
+    <div class="row my-4 mx-4">
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 01</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/1iJkwQgK#GGJlThU9d3lHjVOLKZ0BxMJ1p05k8h8LNj_U83sXa6o"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 2</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/07ZCRAzD#U8PynOahVBbSb4VY1pCxYaSUmzv_uq4t9UproXfP2q4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 03</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/M2ZCmCQR#ld9BWkYn4cGBhTBL3fG7QUIgRpou3voTnJl4lPBz_MQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 04</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/JnQGXKpC#uAnCHDCMw_y2TydONZM4vMKkbdmIpLBeSnmIegeQxn4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 05</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/97Ig2C7D#Z1LK5IE9fN5FaAxSUCo5XzDCxQF6HlTx0CfTDlyFxtI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 06</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/5vICiYgA#O7I1u-h0X4D5J4eKW1lIj3SfVq9LLAobYha9HMkpbUY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 07</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/M6ZQTSgI#JFhCwfsS_VZ0MKR4UDGC_FnK3VAqEtsRDYuwsYbJtrQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 08</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/V7QmTIYQ#4wJ7VoI7BK1jvTiL62k73biOvQ8qerp9Bx5bY82mSSM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 09</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/crZQzIbB#-HN8Zuci4SU78VQHRXV02inmjsWVk-R0smS_LAd8FPI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 10</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/hnRwiQpB#nEkYJdlbXLfUgUkZhXWJWOW9ClGH-CROyqhA1kqF0CA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 11</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/JnRC2CoD#jw_kywX78MvN7FNI0D8slmdSZQ7ouSvke_aP7Pdpw-Q"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 12</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/ZzRWFSZS#mdzfpHQ-8tL11KDZiyH4Pka7Zj24q6fkkX3Hzz8jfqM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 13</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/p6B2RA7K#aF1NsoLfcHeiBdN_JnQy_H6nlv7kDYHLHzXpSgQZd2s"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 14</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/lvIkWYpa#y26U64u_dE6m5tCaRtRHdj9lD6rzBgMY7Jz6YPM3xh4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 15</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/8uAkQSBD#-IE6MtVrSKZExvr6uUS9pHTBPQyk987_QxA_lAdBQqs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 16</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/s2ZiSAaR#KS-S9YHczR7zqClWrYkWcw0SfgsY56QHYeuJnGldf_E"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 17</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/UuAW3aLD#Yn5muGCb4c4A6HOeqimhKP5zKPxGa1-IDDKJvJrYNic"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 18</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/d3BCUCiR#r4UrGgknqXinaJYDHm1I5b1eSs4JobVopSd_jFPghIw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 19</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/dvQEjCRZ#QYw1dIHFXPGzOAaTP1xE_zab3bYYxunZBlHgglMHyI8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 20</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/Q6J0VAja#EtdP0GCbPfUJ5uwfM9FLS9U_mmibHZhKv2Kw6xEZjsU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 21</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/d7QSyS7J#mVyW_RLbk7efgPnPQ6SdZyrYbS1OqD0v9CNlL7pfCSk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 22</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/92AmDYob#QLIENKJ9ZjpjEambIbgj4N_47uRYTVUtZQTAja52Vb4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 23</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/UvIAhYib#rQFd5KhgrE4rZ8rYGjShdn6c53JvZtHdNDLt1cxhYA8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 24</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/E3A2zQyQ#4BmDvQzXb0eMRZdOChbTAJyAfdsTtqLf0gAHWjtyeTk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 25</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/ojRkHaqQ#Zj33p7W311AvLEJMvOHWVLvgtQQVWpxa3a4ajUgngTo"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 26</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/AyZGTKiZ#MQ7DJ-_HA0h4GOip3QXHLA8BDGRJsGagrprSpONqmzQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 27</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/o7JAxCKL#F5MjouuANNpL-n_Lsw0RwM0LmcARyjT3-oKfFD2bH2o"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 28</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/luBGRAqA#VLlwYwv92Y_SyNvnRd8n5SljVpMEwRf4lRaJ33pOvI4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 29</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/U3JEjKhR#DIx_VuXo_71nB2QXvpXLo7y4O0YnWWn4znQ-AdwP5EQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 30</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/4jQ2wQgD#Q8bcYTnJkqoBXyn4JMo0byxQnit0YV4kybaQ5EhGswc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 31</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/cnICxCQA#-0UGR4D_9wy1aB0wfnj0gYv_C6sOCuMIX0eOq-Rp-IY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+   
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 33</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/BmZyWARb#k62FK6SoMbztmXLdQKB-WxKDlrRsNiBDwMbwHvcXYRA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 34</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/0qIyBaoS#DVz-O05m9VPWTb9h5LlEehj7NzLKGUA1JXPpD_GvVMI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 35</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/IiYQAIZA#_TAE9vxNx75ub-wymukCWKbSegaYZAoL3tkNPzNs9Gw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 36</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/UiBSWagD#C3lTDMpW1-EuXr52g9lky2nurmK7ytMpgtZtbXgiT5w"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                              
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 37</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/J6RQTaqA#bMW3gnB0T3KRhg5pKOspDmfvyXIEeLBJKo8aysbmIz8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 38</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/djQwWYbQ#hKBiDnHGXyMBgpJh8r0hv4k7nfi2NwZMhzFQAozDFjY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 39</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/8yZkHCYI#cxUBlDrVpjxwr4Z39iYcy09R5rKFkThVkm1Fj6nRPL8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 40</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/92RSBIDQ#ZqA-WLxA2_it0Fdt_uGUaDW0VDDADAmAPvZkaWjGwb0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 41</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/xyJWnSIJ#eK41I5V17af5wV4AM03QPINYoVy_EWOsL48rGqvOorA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 42</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/5yYUCKYQ#s1x6hMxpP3nyGOaQ2kA9FTrI4DHYcTWgcEnD6PCw95k"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 43</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/4iY2DQKS#Tjoj5Dt3CpQ0efrCX6Mo4cd_TrBb6dYeHFGQzG-1zOU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 44</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/YvBS2CDR#Y2QGPcL2WNIE5MlOpclZaRAnxdjlVzNeJSQX3MzYEpc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 45</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/QyBCFKSC#NDY4_yFYbYAQ1rkUpTwdOVa_Vn3rjJCGhuozvlK3BkE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 46</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/l7QQmAwC#Tx345XNo8z2MokzmMAvcDVRYA7I7s7aQxxRbHAZ84ew"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 47</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/x3BSyATA#HI8QlMNO5aDdLj1Q3CljCoDxY2XyYhhvJ1yCOPujOy8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 48</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/1uYimIrB#AyzpraYVy49DLBFxZhvLbnLxxFP5c4a3w1R9qgMbo1g"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 49</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/tyQGkIIa#pndOmuBIXsAOIBmCS0dnZwKcNXAM6NwVqAkLjQZr0_8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 50</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/Q3JwxYza#1gkPP-wFJusQ4uZZIgImPRcaMzZPTpc86Khv2mLFx0M"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 51</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/h7RknK5Z#l3bUcCvLJUCYKnSW2tLfqMuZ177TzO1v3k2kxLDMkx4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://i.pinimg.com/236x/0d/af/a8/0dafa8fb0fbeb29ec1a56ca0e65963c2.jpg" width="140" height="140">
+                <h2>Episode 52</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/B2IwFCoZ#z9cd29Y8nyQQROibnZEQC1dfKEFjioI3ZTa56Dzgz7M"><button class="btn btn-outline-danger">Start Watching »</button></a>
+ </button></a>
+                    
+                </p>
+            </div>
+        
+           
+        
+          
+
+  <!-- FOOTER -->
+  <footer class="container-fluid bg-dark my-0 py-3 text-light">
+    <p class="mb-0 text-center">&copy; 2020-2021 Shinchan Universe</p>
+    <p class="mb-0 text-center">
+      <a href="#">Back to top |</a>
+      <a href="#">Privacy |</a>
+      <a href="#">Terms</a>
+    </p>
+
+  </footer>
+  <!-- Custom JavaScript -->
+  <script src="https://apis.google.com/js/platform.js" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/433888fe69.js" crossorigin="anonymous" defer></script>
+  <script>
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    let otpbtn = document.getElementById('otpbtn');
+    if (otpbtn != undefined) {
+      otpbtn.addEventListener('click', (e) => {
+        otpbtn.innerText = 'Sending...';
+        e.preventDefault();
+        if (!otpbtn.classList.contains('disabled')) {
+          otpbtn.classList.add('disabled');
+          otpbtn.disabled = true;
+          csrf_token = getCookie('csrftoken');
+          let formData = new FormData();
+          formData.append('email', document.getElementById('email').value);
+          formData.append('csrfmiddlewaretoken', csrf_token);
+          fetch('/utils/sendotp', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data.startsWith("Error")) {
+                otpMessage.classList.add('text-danger');
+                otpbtn.innerText = 'Error';
+              }
+              else {
+                otpMessage.classList.add('text-success');
+                otpbtn.innerText = 'OTP Sent';
+              }
+              otpMessage.innerText = data;
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        }
+        else {
+          // Otp has already been sent
+        }
+
+      });
+    }
+  </script>
+  
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+
+</html>

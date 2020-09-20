@@ -1,0 +1,945 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content=" "> 
+
+  
+  <title>Shinchan Universe</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+
+  
+  <link rel="stylesheet" href="/static/home/css/navbar.css">
+  <link rel="icon" type="image/png" href="/static/home/img/favicon.png"> 
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60726752-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-60726752-3');
+  </script>
+
+  <!-- Google Ads Auto -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9655830461045889",
+      enable_page_level_ads: true
+    });
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><img class="brandLogo" src="" alt=""></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="http://127.0.0.1:5500/my%20website/index.html">Home</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="">Videos</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="https://pythonbycheeeku.blogspot.com/">Blog</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="/contact">Contact Me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 mr-3" method="get" action="/search/">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+      
+      <div>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      </div>
+      
+    </div>
+
+  </nav>
+  
+  
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/profile/login" method='post'><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+                    <div class="form-group">
+                        <label for="lusername">Username</label>
+                        <input type="name" class="form-control" id="luname" placeholder="Enter your username"
+                            name="uname">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="lpassword" placeholder="Enter your password"
+                            name="password">
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+                    <input type="hidden" name="path" value="/videos/">
+
+                    <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form name="contact" method="post" action="/profile/signup"><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+
+          <div class="form-group">
+            <label for="uname">Username</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter your Name" name="uname">
+            <small id="unamehelp" class="form-text text-muted px-1">
+              Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
+              allowed) with no spaces
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+          </div>
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <div class="mx-0">
+              <div class="col-md-8 px-0">
+                <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                <small id="otpMessage" class="form-text"></small>
+              </div>
+              <div class="col-md-4 my-1 px-0">
+                <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Choose a password</label>
+            <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="password2">Retype a password</label>
+            <input type="password" class="form-control" id="password2" placeholder="Retype your password"
+              name="password2">
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+          <input type="hidden" name="path" value="/videos/">
+          <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+<div class="container-fluid main-container">
+    <div class="row my-4 mx-4">
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 01</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/PtcgnIYA#Jcd0JOG_EiA8NsJoKlXfpSng9F6HocJZyMfR7yfQK0s"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 2</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/69UwlCgS#1TXpBY-jNuR0srxoPpGzzsdcsQ8Sf_3FFth01oqScc4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 03</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/nkNyTaQZ#r7GQbTLtCf1qCaC2iKqoOjV0lfQuUBeDUrz2NkjFP5E"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 04</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/31NShYJK#KVNDNv3zDSpbqFitgkTW_NYnNrjmfmz7yzRA_I6vSYM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 05</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/mpEghABB#36VlRIGiD0jH75KX4xyuh-rOBU6RzJ4PpB06qjFV28Q"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 06</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/bgdiWaYL#1eaPhDKPzJzQ9POBRtdbRkmBVLXfFXYWjizZVAq-lAI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 07</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/KhVS3SKa#KZ6Da4N1XlSCqvRXHFJGhB6ylVlOVjg6zMn7ECDZfLQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 08</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/P5ECWQqZ#VlbkOgJEH2XAGFDQMZrMZx4UMUaAz96k4YL9cpKLFi4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 09</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/bpMSlQZY#42UQ--L_yHgnycF_QXSaKOzGUPeoAxI23__UWHzk0co"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 10</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/K8VGHSwD#OJEJF_Ca8Uc3jAEnvB5YsvaF7G8k5CeqZ4KXFINMK6U"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 11</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/O5c0UYqL#gkvphRUplVu-YI-wb9QjsjJu3WxywlvOxD0VoJ0vM1s"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 12</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/f9MiUQ5Q#8lcqhFviOkQCly18rOdc1GgnJ59gGN4Z4yfpUQ_EABg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 13</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/OldGQapR#6A6atVvhbQ6XJCGjRSBAupcT7a9k0Qp1O-mdeg9dyec"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 14</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/zkNEDYpD#NTtJ9SMkdf48oBz1h-DrBEZKrRj2NObyqiUAW2eP8rs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 15</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/CodgWAwb#YgwZPB1L3a3bkthHdnyS2uWyERo5RGH9_cJ1F4g9SbE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 16</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/OkdShKID#GKh-YBCReLBWbCZuMKpE76TDvqT6nyKL5_Cuc9CmFpI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 17</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/C0F2BKZI#uUCxjFqNmy45MNW0PET9wIdzmGUjviiE7S1CeCgM96s"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 18</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/T1UmlCTD#RGG1TgTXFHJp_AbmJK87EHAPiRrgQ1pR0pMpCmx6XMQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 19</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/i1cUFaAQ#icuKBpPsHF2nepLYK0UqzYDUcMFH01gyVXC0IjRg0Aw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 20</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/b8VgEYJJ#Ft_T-IottdYev_TD3SU1PhbA7ASWqdrkfQatvoYHU6I"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 21</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/H9EgDQJR#iOQ6vyVhh5fFHByG7so6NJM8kUGXDHpIyEjgzQKBz4A"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 22</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/bwFAxaaT#xmYtBQ2El6qy3MtL6oUwUIhAA8wFsbxX8N2xRfLRFPE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 23</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/LlNEHYqI#LiOhxRSF2xAl5CTdI6yTRoLYA_bwj_ZCg3h1DZibRVE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 24</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/28UwhCbK#4F1UvGA_Cndm-Sb1eU-aLXU_vH7FupU1hXsqgMZ1QfY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 25</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/z1cyFaSZ#jCGkXXkkq2zu8WE3hiSnCT6lfsTrETNv9RlOZa8ZZ8A"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 26</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/38cAmCrZ#0ibGPE1lFVTX3yYFDs744uvsQIGYmD4YRuubYugXWYM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 27</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/SsMiGCAB#VxjX-hAhIwgnOQWLMUehxnCh4N-6p-p_5zC6_h412GA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 28</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/CldUFIqR#mWc_WWYkGIu81k33woAigGXJhPUziFoTQhrZmvFR6dM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 29</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/u1FE1C6S#BDTvE9ihDTGnQFWpoDSm6Wuhs8b5kERNi69nmbrmiKg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 30</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/DtUgDCTJ#ciJCjvTP_XkxFncrHoFvxCTPAj_62WcvZEBrB7LrUy8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 31</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/jgMiUQLZ#yMofQ56229_VH9m2rVmFUAyPvbNNgpOJ7LF_Zbvt3cQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 32</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/bxU0QCiI#7TwkwdffM7f2IVZE3q5FXtYNyRrGRwyXdA0OulLLkUg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 33</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/29diRaAB#fHFrSOckgI2CrbOAswoEgjo6krPcPzzm1LAcENpVS3g"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 34</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/7kESESJA#zA5rmP1MUlFSIswntqgkiAj-mB3XbBkfhL58Kqobju0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 35</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/H1VQgKDC#BYFg7ulKOuwiFF0jNq2t5SMqwR7Ev8OFl2oi8VQruSg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 36</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/mtMU2CxL#fr6-xvaDhzDNWbZfyYKp-yJeZYEWpsLIQmDKrOU4300"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                      </p>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                        <h2>Episode 37</h2>
+                        <p>
+                           
+                        </p>
+                        <p>
+                            
+                                <a href="https://mega.nz/file/69FEECCK#v8pFI6ndF8VlM9faxWFx7cve8_-oOIvGlQPR4br8yr4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 38</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/2hFCWIba#YRII4LZV1KvWzrSTL-G85GurEkylke9RqmvKBQUVgZY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 39</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/6gFCSKKI#UAlTESMODbtBOijb6FnM8Y3-0Pni7rxwEPoE_L4vdes"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 40</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/WlFCgKAS#ZVpNtQNUqMRT4mV2UQxMvQsw0N7cnFwcrQt-nl6ffzA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+               
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 42</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/O1VGHQTT#xQi9NCAhksPcddWjhr4iR39Gy6yHHQGDO2VkZIvnITE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 43</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/L1dUFYyI#EBKGfr9hnIadRICd8ZeyPQ5mRuiQtexCICMsQRgkZiw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 44</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/L8Fi2ISA#YzvEsFMP4xg6ayxMuMue3_OJ1LQfD9g2FLrBvJgqSk8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 45</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/2kdQDKBD#x2ICH2d8VuSdKgqpL2Xm001vdjfH7LOYgnTh-MRdt7E"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 46</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/C1MCVAqb#DqHkbLiiJ3OV3TN9V7Cab_Z_jRhByEjsFfDhoNftQHQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 47</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/Old2kYYR#SeEFsEvYUS74Qs9O_RIZtzA0AURW00nxeXI1fJ_UlF8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 48</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/fkMk2aqC#w8eOHWVLwRJQywcpgnbghmypXMyqdFW--27XeDQKI70"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 49</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/3pcSwSrL#BXPY1-9cJRV9yhYHk1aH1qWYsCDCphkqH-ieUr8Vr-E"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 50</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/GwVCDA6Y#SsPcHnUaBAzO1Dk_he1cfKR52y1zuCMg3rzc6yc_8pA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 51</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/7oE2CaAL#Q9MZDMq8gy0-wRqYrX2ZTEdfWPpkzSFCfd_XKNDjEE4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://wallpapercave.com/wp/wp3062322.jpg" width="140" height="140">
+                <h2>Episode 52</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/upMASSaK#PsaUCCUBIj6PfUwb5PWz8u2BwtuGtAIP5sYrZyTJ8j8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+ </button></a>
+                    
+                </p>
+            </div>
+        
+           
+        
+          
+
+  <!-- FOOTER -->
+  <footer class="container-fluid bg-dark my-0 py-3 text-light">
+    <p class="mb-0 text-center">&copy; 2020-2021 Shinchan Universe</p>
+    <p class="mb-0 text-center">
+      <a href="#">Back to top |</a>
+      <a href="#">Privacy |</a>
+      <a href="#">Terms</a>
+    </p>
+
+  </footer>
+  <!-- Custom JavaScript -->
+  <script src="https://apis.google.com/js/platform.js" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/433888fe69.js" crossorigin="anonymous" defer></script>
+  <script>
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    let otpbtn = document.getElementById('otpbtn');
+    if (otpbtn != undefined) {
+      otpbtn.addEventListener('click', (e) => {
+        otpbtn.innerText = 'Sending...';
+        e.preventDefault();
+        if (!otpbtn.classList.contains('disabled')) {
+          otpbtn.classList.add('disabled');
+          otpbtn.disabled = true;
+          csrf_token = getCookie('csrftoken');
+          let formData = new FormData();
+          formData.append('email', document.getElementById('email').value);
+          formData.append('csrfmiddlewaretoken', csrf_token);
+          fetch('/utils/sendotp', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data.startsWith("Error")) {
+                otpMessage.classList.add('text-danger');
+                otpbtn.innerText = 'Error';
+              }
+              else {
+                otpMessage.classList.add('text-success');
+                otpbtn.innerText = 'OTP Sent';
+              }
+              otpMessage.innerText = data;
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        }
+        else {
+          // Otp has already been sent
+        }
+
+      });
+    }
+  </script>
+  
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+
+</html>

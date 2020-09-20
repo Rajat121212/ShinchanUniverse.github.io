@@ -1,0 +1,957 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content=" "> 
+
+  
+  <title>Shinchan Unvierse</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+
+  
+  <link rel="stylesheet" href="/static/home/css/navbar.css">
+  <link rel="icon" type="image/png" href="/static/home/img/favicon.png"> 
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60726752-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-60726752-3');
+  </script>
+
+  <!-- Google Ads Auto -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9655830461045889",
+      enable_page_level_ads: true
+    });
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><img class="brandLogo" src="" alt=""></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="http://127.0.0.1:5500/my%20website/index.html">Home</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="/videos">Videos</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="https://pythonbycheeeku.blogspot.com/">Blog</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="/contact">Contact Me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 mr-3" method="get" action="/search/">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+      
+      <div>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      </div>
+      
+    </div>
+
+  </nav>
+  
+  
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/profile/login" method='post'><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+                    <div class="form-group">
+                        <label for="lusername">Username</label>
+                        <input type="name" class="form-control" id="luname" placeholder="Enter your username"
+                            name="uname">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="lpassword" placeholder="Enter your password"
+                            name="password">
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+                    <input type="hidden" name="path" value="/videos/">
+
+                    <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form name="contact" method="post" action="/profile/signup"><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+
+          <div class="form-group">
+            <label for="uname">Username</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter your Name" name="uname">
+            <small id="unamehelp" class="form-text text-muted px-1">
+              Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
+              allowed) with no spaces
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+          </div>
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <div class="mx-0">
+              <div class="col-md-8 px-0">
+                <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                <small id="otpMessage" class="form-text"></small>
+              </div>
+              <div class="col-md-4 my-1 px-0">
+                <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Choose a password</label>
+            <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="password2">Retype a password</label>
+            <input type="password" class="form-control" id="password2" placeholder="Retype your password"
+              name="password2">
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+          <input type="hidden" name="path" value="/videos/">
+          <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+<div class="container-fluid main-container">
+    <div class="row my-4 mx-4">
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 01</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/H1oFmIhB#TX-GdcAnYnQ0Nn7GCO5ixAfqvRMJ6LWhzcT_xDFqrZg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 2</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/a1pBWCiS#iJs8ZN2iNFZlRLlGZZbKmxsBcltyVjei_03dIqm3DY4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 03</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/39hBFKJZ#5ZRSwNaNdloTTzNhnZx2vvCHHZs23v1uHqaLpmIralM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 04</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/30hVXCqR#KpEJ3lO4cVLegTg17qKJfvQLOSWWuhHQ-mi7lHw8PB4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 05</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/X44FGI4a#e-pc-WzXpPBolrzhQvpG-MotF-iqQUsR_gjy-_rH48s"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 06</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/S0xjFYzB#F6L-rZse7dQD4ig9MCGABYoXyy9hSi2ZCAHd3gvgH4E"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 07</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/GwhhTA5C#VlkmL_rXxhZGcyKx-E_VSWQX498j-kiG2nFLgkFHfsE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 08</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/y8oHTaTZ#Zavzie7zaKncLNeBE5j5U63lNQP9AJpiV-nEBvxbn8I"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 09</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/agoRhK7K#oONfMYthUbMU8fm0YfOtzsMGIznoe9AS2z0hJuajeLs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 10</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/W05B2S5B#pJadJyIQbyKL6bB2X8oBOGIj2XVRWXaOckKTZBZ4DE8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 11</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/vkpjBSjA#94SeyKG7YG_KJphsy9WrQrUovyw4IRPXIODbLs88YnA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 12</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/G0hjSYwb#wgdv3LhPs3ugj6gJl-t2APKhlOEarcfOTiSVLaZVWkY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 13</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/DxxxCCiS#jSnhPyz4KYgIV0xhjL549BQOV_ff7pACpFQ6-7qqxdU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 14</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/30xBmA4Y#8YZDJG95maPKOc6NjtqIahRbzYCNXWA0h3Z06e5YMiE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 15</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/fwg3yI4S#aq3n0mBJ6btpV1yns8Ck6RlB0vx7xuizfEbqjY8hHbM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 16</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/Lo4liaLa#HjxNVmINDnG41zWTG0QoUW-XbepCXB8lc2LhrMjw5qc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 17</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/3s43yIoL#1x6m_ViP1itwUIvmwJnVlVLmj3g2RNs8HJCtRKJ9Nh0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 18</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/C54H0IoB#mRz2ndBNV_kOs9b0-XpLeoPLVBcOUT9grdaCAizgtzQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 19</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/z0oxHY7K#RCMO-NfV5JiecE9FpPuM4PzBa5mxCZrCesExucv4qSw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 20</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/m5xjCCzB#nf5LeITTG8bV4AQsODwFR2m4fR7MU0jWv_DTu7Exznk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 21</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/a04nFYzJ#Opdkjd1Vh7RKCtdctpT42Qq7H9l0czhqb1tWAXTHeoo"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 22</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/KsghCCYS#WP2TxWdVt-xl9ZAXqtnOBfb9Xsj5qX9nF9IB2H_kIBc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 23</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/r8xRWYKI#fK_KYqhEeuhb3QQwFFj_IA0Wr5wN_3UYpRZvQozjtWY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 24</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/Hgg3EKwT#-0P_Mioo7bUYRemYPUq8rGlHptBXXb2MEI4LOyKHDZw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 25</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/SthhRAjI#h7ROCKR-F_UUql-loraQaq0yWug0qnbRdqNmz_lXTfU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 26</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/nwxFEYwa#hJ8PXdKGuzeQjSfniswa1SUbdb-s_yyw0wQ8vB2ABVo"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 27</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/7opxTYBa#-ndCeZXZ6QPfIxUcuNbdkyPu-aOykkxAcsYiC3zQ6ZA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 28</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/DhpjxA7S#sXKBq1KoJ0JAcKyhvRgccSupnufoW4nLcSYs32nrLH4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 29</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/j45j0Y5S#ATpCjn3hnaOhxgCmhVCzRUYNF3f1xcOvcOiTV6SEWtM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 30</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/L14XRKQL#wTG4tnTcTyBcI0sZAUdIm2Z6v4O0KHRfdSAaBXLhh0k"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 31</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/74gx0IYA#HWb1ZMZLOPd1rdzcpGpXdTJEm3cfnLnxe_1mB5uKewE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 32</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/ChxTyaTJ#rCSEC2q6sQ7ThFI8g-ukZIqphXNYlyTPl0JNXlNYEJI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 33</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/PghnFIjb#7v5vrohLodh-7b2XD5QyuhJDj4tZpSKNhqjh6oqIGbo"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 34</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/vtxjyaJY#ckp5ypw61Tj10JvqU3sSf3Nuh07QgOu6689zgHejXQI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 35</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/L05nSSZY#D4Wh8wn6U7tnYl4270JjIv1kcaiXr3UzNwhm--azMwo"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 36</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/fx5RxIZK#uIExY1LsdV2UG37ipgg_2miDJ7ByF_BtWfuOkSHm19g"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 37</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/W14x3A7A#HDQyeN8Fk8gY7ZD25x4QLnV7V--OTWJl7p1A-hDEzdU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                      </p>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                        <h2>Episode 38</h2>
+                        <p>
+                           
+                        </p>
+                        <p>
+                            
+                                <a href="https://mega.nz/file/fpgRhABB#dr_hdhL-YMXe9OaOCvR2fVRVtwNHtQOSjcf0MvI35JM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                            
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 39</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/mso3wQpJ#jRjr4TVrKLDlTLraKwy4m9DbOqyk7h1pMo4JwyZYWVw"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 40</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/jkglDKZD#wEpS8kixcTxJT4IseFIHQ0Rcx_xwpfCwo34PbR0iE30"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 41</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/Xp43kC7a#t1nsCkRdfwLjw-NNnDon6vd1rwQiPMHkXkiV7AET_dc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 42</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/K4hRHALQ#CJPH0zl74kWppYuJONJK3P2zj9QoNpjHbcY6RW3eHjc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 43</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/35513C7C#Vv4PXvJWLS-FG75s_kDjrTw5omG2BQj8YhoD-uG47tM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 44</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/qopHXaJQ#UdksiG8GV6e89a9ovwv-8twOF6k-H_Ux6ilvmD4_BTk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 45</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/HsozHYgI#4jMiQhQnE-jsDc7xKvtv2Te0uibuAbRX_RILHYHJWG4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 46</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/iphxjQwR#AVYuRX_h2HbKwLDYIbkP3dBosFT5bKf71eHJqfVRuK8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 47</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/b44l2ALD#FmOnSVsxFXtAbrPwBq36l5DRpVnG_YykcAUA-CloyVE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 48</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/7kw3TSSa#OtxKgMNPSbisW4d_XFR40yWfTpRo4JC57kR7r_l5RP0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 49</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/ukwT0YxR#Kjxf1SRORPZmqUPDuaVmDczjFzeS72f_CtI8pPkAa9o"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 50</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/2wxXQI7L#wvkCUvFat3XTyBWZSV1r5qxlhy9F1P_IVJs3NfZWLd0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 51</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/ughBiQgB#jyFASxh5hh1HGedbTtQZYcX2TrmVMaQ9VVE4FaQyp4Y"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://avatars2.githubusercontent.com/u/29085361?s=460&u=52063c0856be11c569a6c8b9f67c6a37b11daefe&v=4" width="140" height="140">
+                <h2>Episode 52</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/6lwxhSpC#HKsrPBZuiGLzz4TqnFwgEDjED0RbYKTMzJLu1NrXb1w"><button class="btn btn-outline-danger">Start Watching »</button></a>
+ </button></a>
+                    
+                </p>
+            </div>
+        
+           
+        
+          
+
+  <!-- FOOTER -->
+  <footer class="container-fluid bg-dark my-0 py-3 text-light">
+    <p class="mb-0 text-center">&copy; 2020-2021 Shinchan Universe</p>
+    <p class="mb-0 text-center">
+      <a href="#">Back to top |</a>
+      <a href="#">Privacy |</a>
+      <a href="#">Terms</a>
+    </p>
+
+  </footer>
+  <!-- Custom JavaScript -->
+  <script src="https://apis.google.com/js/platform.js" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/433888fe69.js" crossorigin="anonymous" defer></script>
+  <script>
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    let otpbtn = document.getElementById('otpbtn');
+    if (otpbtn != undefined) {
+      otpbtn.addEventListener('click', (e) => {
+        otpbtn.innerText = 'Sending...';
+        e.preventDefault();
+        if (!otpbtn.classList.contains('disabled')) {
+          otpbtn.classList.add('disabled');
+          otpbtn.disabled = true;
+          csrf_token = getCookie('csrftoken');
+          let formData = new FormData();
+          formData.append('email', document.getElementById('email').value);
+          formData.append('csrfmiddlewaretoken', csrf_token);
+          fetch('/utils/sendotp', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data.startsWith("Error")) {
+                otpMessage.classList.add('text-danger');
+                otpbtn.innerText = 'Error';
+              }
+              else {
+                otpMessage.classList.add('text-success');
+                otpbtn.innerText = 'OTP Sent';
+              }
+              otpMessage.innerText = data;
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        }
+        else {
+          // Otp has already been sent
+        }
+
+      });
+    }
+  </script>
+  
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+
+</html>

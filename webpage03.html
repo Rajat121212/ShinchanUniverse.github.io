@@ -1,0 +1,957 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content=" "> 
+
+  
+  <title>Shinchan Universe</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+
+  
+  <link rel="stylesheet" href="/static/home/css/navbar.css">
+  <link rel="icon" type="image/png" href="/static/home/img/favicon.png"> 
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60726752-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-60726752-3');
+  </script>
+
+  <!-- Google Ads Auto -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9655830461045889",
+      enable_page_level_ads: true
+    });
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><img class="brandLogo" src="" alt=""></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="http://127.0.0.1:5500/my%20website/index.html">Home</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="">Videos</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="https://pythonbycheeeku.blogspot.com/">Blog</a>
+        </li>
+
+        <li class="nav-item font-weight-bold">
+          <a class="nav-link" href="/contact">Contact Me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 mr-3" method="get" action="/search/">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+      
+      <div>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      </div>
+      
+    </div>
+
+  </nav>
+  
+  
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/profile/login" method='post'><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+                    <div class="form-group">
+                        <label for="lusername">Username</label>
+                        <input type="name" class="form-control" id="luname" placeholder="Enter your username"
+                            name="uname">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="lpassword" placeholder="Enter your password"
+                            name="password">
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+                    <input type="hidden" name="path" value="/videos/">
+
+                    <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form name="contact" method="post" action="/profile/signup"><input type="hidden" name="csrfmiddlewaretoken" value="ebjnMqy6053lR7LUHoooQfDZPrgKcSS480wCBGotcFhr6bbYvnGs0x2DTuQWXnK9">
+
+          <div class="form-group">
+            <label for="uname">Username</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter your Name" name="uname">
+            <small id="unamehelp" class="form-text text-muted px-1">
+              Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
+              allowed) with no spaces
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+          </div>
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <div class="mx-0">
+              <div class="col-md-8 px-0">
+                <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                <small id="otpMessage" class="form-text"></small>
+              </div>
+              <div class="col-md-4 my-1 px-0">
+                <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Choose a password</label>
+            <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="password2">Retype a password</label>
+            <input type="password" class="form-control" id="password2" placeholder="Retype your password"
+              name="password2">
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+          <input type="hidden" name="path" value="/videos/">
+          <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+<div class="container-fluid main-container">
+    <div class="row my-4 mx-4">
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 01</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/uoFU3QwB#QLDu68sMYHYBcofpye8-96BgZocMit29I24W4rhOKOg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 2</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/HhFExSiB#8ISnHCDfGeqAK-QewyCXqwxeJTqXp2Kn6NbWoZa1nSU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 03</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/20VmxKrQ#_cgMAoC1LQXTXbviY8I5cd-nzZo-TLJ1ebtJKJ1wubk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 04</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/OsVUHKgT#WVuWueF_Y2RVw1JeD-6a-PnfTMVJ0mz9pXC6UGLw9NA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 05</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/qsUAASBQ#IYUDWdL6HkNhnS1Sxo_068ix06dWQzLEl4IvTzTI8JE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 06</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/y4EWDKRZ#5Ikx1DnIBYr-ITTCF7ngindjHsoV-LFBzBtR4QA6T58"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 07</h2>
+                <p>
+                  
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/b1NU0CCI#VIIAJnvz_Rca7nnolvt4q7IEUu1dv8Yaj0og9WANugs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 08</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/apUwgSTZ#3mf48TzhvEMG-yeJDm0vYBfn8yXLoUl1oSV46XgakTU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 09</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/OsFU2Y6a#GRV5V5I4DhxkRornT-6XOmmNKCTkE-DbfhlvbvBw1Mc"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 10</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/XodwlSII#R_0YWXi7pwDkWv67k3T5ruwoP6FX_8Yb0jVn_oGKRJs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 11</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/C8NUXQTQ#fe9UhtErOLlxR9rA0YI5ZxMqbBDg4K4zTaErqNHeXxM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 12</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/6tdyWIzB#G62Ki5k-TY-gzUPzLi9Tf6sIWg6rvmodIYcuYlYi1aI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 13</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/PsFGgAQb#hVFGBEInFWy4-yE9nCerlLRhxLhZIk2-fe5GRNc8zHQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 14</h2>
+                <p>
+                    
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/XsV2FYpI#eA-60DY4wciRHdgI4qYQhnUxxECkdMySnXYOkz1_mJs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+        
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 15</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/LxcShCDK#nCgbuGQmEQ-Bb1be216RX532GAd-iA3gWYe0iRH1qZk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 16</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/j9F2BKwC#RyPtKhYL5FB-eJJMPkqdtHTgF1NPqbpxtCewbNJYphk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 17</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/atNgQIQL#zOUyc0zWReDFdvIO57r16QS4yZfPXnjDOTE_uiMh_Qo"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 18</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/LtFE3CxJ#KFWxyTdTB2-dv_b2YEoKl3ZIknqhMbULJlYqbUpovOM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 19</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/H4EyiAxB#25KLm95SM8Fx3P6ac2b0f5rozOl-cWDScqOle_iOh-A"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 20</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/CpVAHQqK#JuXoHnOuJmubwIBtBPWgKTNybDOP4NDBzP8ndZC4sI8"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 21</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/e1VGSA4I#h7dhBJxSLdE_RZKRXxsQkf2AhC1ztIqAkf6DI7sjQ5Y"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 22</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/j8UE0IIZ#GG_iOEJT2p1risBZpGdTmQ8ZlwTtt7KnnkZexSjb-UQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 23</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/btdSFara#W7Z4vSKawjvSFJrT8pz1CvGDU1g8ysDhijcfuvrg39A"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 24</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/70N20a7I#xELZ73N7KI__KPtlgrfk5efVqU_Y-Dv6Xb6fL59rs7o"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 25</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/boN0nAzA#impgpPGzMZpz5k2N_e83d2ZM09zE1bdf2KzMQh73ibk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 26</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/mlNyDKTb#MUsr82zL8eDDLVFjHnUPWB1DAgDIkPDjA7QeYVgWgxE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 27</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/j5E0FATJ#6L3fZm-8mNzGHVpvSnLzqaK0Uf7vd1TVeJIm-eQDxng"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 28</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/fpd2yYoQ#yqpCUKEh3rgMr1wiK2nmNFiJkStiiDqwhIojQB_Wm2o"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 29</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/31E2DYhA#ZpT3NHaX1aRtS2ryjdbsz42z8gsO55O_j2pZ0Sv8SDs"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 30</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/vkM00Yya#HyaEeB1wWg4xUBDr74edtKAnmlG80Ik18LNx5m7wbuY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 31</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/b1N2jAjC#IF1Ed13c3-wtKpjHfekWjYEJbeP0bwie3bab0iiuOKQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 32</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/2wcCEIwJ#BZ8nvtp54oYkJKIRLAOMShX8lmW2SjlndlBieEiwWB0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 33</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/7odS1IzA#zkgbSF4e3C6DJBGVgQ_lAROJFG4cmEO2IA56zbvPZU4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 34</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/rld2EQRB#U4RXlIM6RY9svxOs2VLuqVdpa0ceqtGDi0X95ySDMek"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 35</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/HxMyTQaR#cuMpMoVhn-lFaZIqH6FeVkzod3taiMdVL6uZnDZyhEM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 36</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/HxVwjCLR#g0lXQjSUPGJod2JeaFr2Z40polH94BlykNdi8YwN9RM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                      </p>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                        <h2>Episode 37</h2>
+                        <p>
+                           
+                        </p>
+                        <p>
+                            
+                                <a href="https://mega.nz/file/KsVgUIAL#GB5NXIU46JNhvsum0qNMEp4THyU8PQqciuITxeWep1Q"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                            
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 38</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/6gUUWKAB#wJs44g_nOjBH2Jn3612AOVU3DobccrNvH-oZjBlzHYg"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 39</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/voMS3YDZ#MP-NRPbIpbY3ZbSPx0UBMP2YZQ7oYnWoVsiTO4FdwbU"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 40</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/78UWzSpI#bDBlfxrfaH1T8j72si-PzDbeQbYznRERLTsMSxaiO0E"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 41</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/HoMUgArT#N_ZOPmFQTlujtGBtHaM8dC1v5XQiQrzsrSkYuESLh5k"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 42</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/exMQxYLB#Fb6yq7ElkFwcNSStRnGxU4chuFcQAl2BpDoGqNJ4Lvk"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 43</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/nlcmgIiI#1qYFbD0RUYJbc5RSSjSIwuy6jA0iXTCB8R2kOT-XqLA"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 44</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/KsUEnIiQ#kw7tCM3lnaugXr5OzAYnvtnX8hKr0xoTk-xZ-PHp4y4"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 45</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/38FmgArI#hqd2AXKT8RNVG4bd1Le7-W4NAxPdqRDDWk3mCkZb0ss"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 46</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/SxcQgAKI#gCPIjstUYe2C-rwitmBpLnRDwm6SKMG_WwK_Hi1caec"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 47</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/alEWUKiI#MzqcoT8o9EZWvgnW1Nante9dz1voZgRX6eYAj9Bpth0"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 48</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/mkVSWSrS#oI9gd1g-HviedARRiMj3ipRXMvCqeD2Lj4Z9fNLvQGY"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 49</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/axF2CSAI#99JbVHxk2HkCzI5yyHPbk3aRuh4DM-C4IHbnmaspqzQ"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 50</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/m4cW3KQR#VcgIDn8rBYPgkc6P-UXQDwvq9RroAQtvYMNhXSTj9mM"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 51</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/b8E2gaiK#21TGtb9RkLjRr6gvmITy2QqHIPGFI5BpagrE6B0KyBE"><button class="btn btn-outline-danger">Start Watching »</button></a>
+                    
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="https://1.bp.blogspot.com/-3QvsAN5mtWk/TtSd9vhc6nI/AAAAAAAAAIE/6HC2Kk3eVbc/s1600/Crayon.Shin-Chan.26543.jpg" width="140" height="140">
+                <h2>Episode 52</h2>
+                <p>
+                   
+                </p>
+                <p>
+                    
+                        <a href="https://mega.nz/file/HwEy2I4K#5pjjDmO0a2MiXgCmX4uq9dBwp8tmVM6xsYu62jtEQdI"><button class="btn btn-outline-danger">Start Watching »</button></a>
+ </button></a>
+                    
+                </p>
+            </div>
+        
+           
+        
+          
+
+  <!-- FOOTER -->
+  <footer class="container-fluid bg-dark my-0 py-3 text-light">
+    <p class="mb-0 text-center">&copy; 2020-2021 Sinchan Universe</p>
+    <p class="mb-0 text-center">
+      <a href="#">Back to top |</a>
+      <a href="#">Privacy |</a>
+      <a href="#">Terms</a>
+    </p>
+
+  </footer>
+  <!-- Custom JavaScript -->
+  <script src="https://apis.google.com/js/platform.js" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/433888fe69.js" crossorigin="anonymous" defer></script>
+  <script>
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    let otpbtn = document.getElementById('otpbtn');
+    if (otpbtn != undefined) {
+      otpbtn.addEventListener('click', (e) => {
+        otpbtn.innerText = 'Sending...';
+        e.preventDefault();
+        if (!otpbtn.classList.contains('disabled')) {
+          otpbtn.classList.add('disabled');
+          otpbtn.disabled = true;
+          csrf_token = getCookie('csrftoken');
+          let formData = new FormData();
+          formData.append('email', document.getElementById('email').value);
+          formData.append('csrfmiddlewaretoken', csrf_token);
+          fetch('/utils/sendotp', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log(data);
+              if (data.startsWith("Error")) {
+                otpMessage.classList.add('text-danger');
+                otpbtn.innerText = 'Error';
+              }
+              else {
+                otpMessage.classList.add('text-success');
+                otpbtn.innerText = 'OTP Sent';
+              }
+              otpMessage.innerText = data;
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        }
+        else {
+          // Otp has already been sent
+        }
+
+      });
+    }
+  </script>
+  
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+
+</html>
